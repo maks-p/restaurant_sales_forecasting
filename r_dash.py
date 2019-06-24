@@ -1,33 +1,79 @@
 import dash
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
 from dash.dependencies import Input, Output
 
+import pandas as pd
+import plotly.graph_objs as go
 
-app = dash.Dash('Art in the Age of Machine Learning')
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
-text_style = dict(color='#444', fontFamily='sans-serif', fontWeight=300)
-plotly_figure = dict(data=[dict(x=[1,2,3], y=[2,4,8])])
+df = pd.read_csv('df_for_dash.csv')
 
+available_indicators = ['sales', 'covers', 'ppa', 'temperature', 'apparent_temperature', 'humdiity', 'precip_prob']
 
 app.layout = html.Div([
-        html.H2('Art in the Age of Machine Learning', style=text_style),
-        html.P('Hello', style=text_style),
-        dcc.Input(id='text1', placeholder='box', value=''),
-        dcc.Graph(id='plot1', figure=plotly_figure),
+    html.Div([
+
+        html.Div([
+            dcc.Dropdown(
+                id='xaxis-column',
+                options=[{'label': i, 'value': i} for i in available_indicators],
+                value='sales'
+            )
+        ],
+        style={'width': '30%', 'display': 'inline-block'}),
+
+        html.Div([
+            dcc.Dropdown(
+                id='yaxis-column',
+                options=[{'label': i, 'value': i} for i in available_indicators],
+                value='covers'
+            )
+        ],style={'width': '30%', 'float': 'left', 'display': 'inline-block'})
+    ]),
+
+    dcc.Graph(id='indicator-graphic'),
 ])
 
-@app.callback(Output('plot1', 'figure'), [Input('text1', 'value')])
+@app.callback(
+    Output('indicator-graphic', 'figure'),
+    [Input('xaxis-column', 'value'),
+     Input('yaxis-column', 'value')])
+     
+def update_graph(xaxis_column_name, yaxis_column_name,
+        ):
+    
+    dff = df
 
-def text_callback(text_input):
-    return {'data': [dict(x=[1,2,3], y=[2,4,8], type=text_input)]}
+    return {
+        'data': [go.Scatter(
+            x=dff[dff['variable'] == xaxis_column_name]['value'],
+            y=dff[dff['variable'] == yaxis_column_name]['value'],
+            text=dff[dff['variable'] == yaxis_column_name]['date'],
 
-
-
-
-
-
+            mode='markers',
+            marker={
+                'size': 15,
+                'opacity': 0.5,
+                'line': {'width': 0.5, 'color': 'white'}
+            }
+        )],
+        'layout': go.Layout(
+            xaxis={
+                'title': xaxis_column_name,
+                'type': 'linear'
+            },
+            yaxis={
+                'title': yaxis_column_name,
+                'type': 'linear'
+            },
+            margin={'l': 40, 'b': 40, 't': 10, 'r': 0},
+            hovermode='closest'
+        )
+    }
 
 
 if __name__ == '__main__':
