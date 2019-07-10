@@ -20,8 +20,15 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 * **Weather Data** | Weather data was accessed via the DarkSky API. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py").
 
 **Restaurant Background**
-The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.8 MM in net sales in 2018 (dinner service only):
 
-![sales](https://user-images.githubusercontent.com/42282874/60993726-05e84d00-a31d-11e9-8924-89b91ea62c25.png)
-![covers](https://user-images.githubusercontent.com/42282874/60993725-05e84d00-a31d-11e9-8b7f-eff9ede75f09.png)
+The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.84 MM in net sales in 2018, though this was down from 2017:
+
+![sales](https://user-images.githubusercontent.com/42282874/60994080-c2daa980-a31d-11e9-9788-47c4867514d3.png)
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="500" />
+  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="500" /> 
+</p>
+
+
 
