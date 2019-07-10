@@ -1,5 +1,5 @@
 # Art in the Age of Machine Learning
-### *Predictive Analytics for Restaurants*
+### Predictive Analytics for Restaurants
 
 **Project Scope**
 
@@ -21,12 +21,16 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 **Restaurant Background**
 
-The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.84 MM in net sales in 2018
+The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.84 MM in net sales in 2018 on 78,000 covers.
+
+The following two charts demonstrate the restaurant's performance on a monthly basis:
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/42282874/60995179-ffa7a000-a31f-11e9-80ce-464b11728c0f.png" width="400" />
   <img src="https://user-images.githubusercontent.com/42282874/60995178-ffa7a000-a31f-11e9-9e4c-40493f248ae5.png" width="400" /> 
 </p>
+
+With more seating available during the warmer months, there is clear seasonality present. And like most restaurants, the subject is busiest on weekends:
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="400" />
