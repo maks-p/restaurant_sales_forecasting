@@ -21,13 +21,16 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 **Restaurant Background**
 
-The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.84 MM in net sales in 2018, though this was down from 2017:
-
-![sales](https://user-images.githubusercontent.com/42282874/60994080-c2daa980-a31d-11e9-9788-47c4867514d3.png)
+The subject is an award-winning, two-start restaurant located in Brooklyn, NY. The restaurant has a patio that adds a substantial amount of seats. The restaurant is performing extremely well, earning $5.84 MM in net sales in 2018
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="500" />
-  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="500" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/60995179-ffa7a000-a31f-11e9-80ce-464b11728c0f.png" width="400" />
+  <img src="https://user-images.githubusercontent.com/42282874/60995178-ffa7a000-a31f-11e9-9e4c-40493f248ae5.png" width="400" /> 
+</p>
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="400" />
+  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="400" /> 
 </p>
 
 
