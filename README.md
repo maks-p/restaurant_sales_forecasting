@@ -21,7 +21,7 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 #### Restaurant Background
 
-The subject is an award-winning, two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.84 MM in net sales in 2018 on 78,000 covers.
+The subject is a two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.84 MM in net sales in 2018 on 78,000 covers.
 
 The following two charts demonstrate the restaurant's performance on a monthly basis:
 
@@ -53,4 +53,19 @@ Test R-Squared:   0.7985732635793398
 Root Mean Squared Error:  1392.6958027653395
 ```
 
+#### Correlation
 
+A quick look at the correlation coefficients between sales & temperature does imply a meaningful correlation between the two, though this is likely largely caused by the presense of additional outdoors seating in warm weather.
+
+```
+{0: 0.6067494091067502,
+ 1: 0.5648085035371838,
+ 2: 0.5217618281364986,
+ 3: 0.5985487427152698,
+ 4: 0.6526160966680253,
+ 5: 0.6285813402808068,
+ 6: 0.5558958668516343}
+ ```
+The strongest correlation is on Friday (Day 4) and Saturday (Day 5). The following scatterplot provides a good sense of the relationship:
+
+![corr_temp_sales](https://user-images.githubusercontent.com/42282874/61075470-0a2d6c80-a3e8-11e9-9877-2ddd2d86a22d.png)
