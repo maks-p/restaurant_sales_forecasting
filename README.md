@@ -37,5 +37,14 @@ With more seating available during the warmer months, there is clear seasonality
   <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="400" /> 
 </p>
 
+#### Baseline Linear Regression
+
+A simple Linear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
+
+```
+Train R-Squared:   0.7652830449744104
+Test R-Squared:   0.7985732635793398 
+Root Mean Squared Error:  1392.6958027653395
+```
 
 
