@@ -66,6 +66,6 @@ A quick look at the correlation coefficients between sales & temperature does im
  5: 0.6285813402808068,
  6: 0.5558958668516343}
  ```
-The strongest correlation is on Friday (Day 4) and Saturday (Day 5). The following scatterplot provides a good sense of the relationship:
+ 
+![download (1)](https://user-images.githubusercontent.com/42282874/61075753-b0797200-a3e8-11e9-8a76-729d48d2da34.png)
 
-![corr_temp_sales](https://user-images.githubusercontent.com/42282874/61075470-0a2d6c80-a3e8-11e9-9877-2ddd2d86a22d.png)
