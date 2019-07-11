@@ -57,6 +57,8 @@ Root Mean Squared Error:  1392.6958027653395
 
 A quick look at the correlation coefficients between sales & temperature does imply a meaningful correlation between the two, though this is likely largely caused by the presense of additional outdoors seating in warm weather.
 
+
+**Correlation by Day:**
 ```
 {0: 0.6067494091067502,
  1: 0.5648085035371838,
