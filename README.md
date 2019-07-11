@@ -17,7 +17,7 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 #### Data Sources
 * **Restaurant Sales Data** | Restaurant sales and guest counts ("covers") were downloaded directly from the restuarant's Point of Sale ("POS") on a check-by-check basis from 1/1/2017 through 06/30/2019, then aggregated into nightly totals covering the Dinner period only.
 
-* **Weather Data** | Weather data was accessed via the DarkSky API. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py").
+* **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
 
 #### Restaurant Background
 
@@ -26,15 +26,15 @@ The subject is a two-star restaurant located in Brooklyn, NY. It has a patio tha
 The following two charts demonstrate the restaurant's performance on a monthly basis:
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/60995179-ffa7a000-a31f-11e9-80ce-464b11728c0f.png" width="400" />
-  <img src="https://user-images.githubusercontent.com/42282874/60995178-ffa7a000-a31f-11e9-9e4c-40493f248ae5.png" width="400" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/60995179-ffa7a000-a31f-11e9-80ce-464b11728c0f.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/60995178-ffa7a000-a31f-11e9-9e4c-40493f248ae5.png" width="425" /> 
 </p>
 
 With more seating available during the warmer months, there is clear seasonality present. And like most restaurants, the subject is busiest on weekends:
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="400" />
-  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="400" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="425" /> 
 </p>
 
 The following heatmap shows Average Sales for the restaurant by Day of Week & Month:
@@ -71,3 +71,36 @@ Correlation by Day:
  
 ![download (1)](https://user-images.githubusercontent.com/42282874/61075753-b0797200-a3e8-11e9-8a76-729d48d2da34.png)
 
+#### Outliers
+
+Sales & Covers two standard deviation or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
+
+#### Feature Engineering
+
+The following features were engineered as part of the modeling process:
+
+* **Month Clusters** | K-Means Clustering was used to reduce dimensionality by clustering months together into four separate groups on the basis of historical sales central tendencies (median, standard deviation and max).
+
+* **Sales Trend** | The ratio of 7-Day Moving Average over the 28-Day Moving Average reflects short term sales momentum.
+
+* **Temperature Bins** | Temperature was converted from a continuous variable to a categorical one using KBinsDiscretizer (KMeans).
+
+* **Precipitation While Open** | True if the maximum precipitation for the day occurred during service hours (above a minimum threshold). A proxy for rain during service.
+
+* **Other Weather Features** | Humidity, Precipitation Probability (as of 7:30 PM).
+
+* **Holiday & Sunday Three Day Weekend** | Calendar features.
+
+* **Interaction Variables** | Between Temperature Bins & Outside Boolean.
+
+
+#### Modeling Process
+
+A Linear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
+
+```
+Train R-Squared:   0.7986569267331078
+Test R-Squared:   0.8386938046584955 
+
+Root Mean Squared Error:  1246.30182948571 
+```
