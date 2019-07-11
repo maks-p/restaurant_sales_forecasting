@@ -37,6 +37,12 @@ With more seating available during the warmer months, there is clear seasonality
   <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="400" /> 
 </p>
 
+The following heatmap shows Average Sales for the restaurant by Day of Week & Month:
+
+![heatmap](https://user-images.githubusercontent.com/42282874/61073078-9b99e000-a3e2-11e9-84cf-de5cd439a12a.png)
+
+In 2018, the last full year of operations, the subject averaged nightly sales of $16,170, with a standard deviation of $2,606.
+
 #### Baseline Linear Regression
 
 A simple Linear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
