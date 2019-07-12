@@ -19,6 +19,13 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 * **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
 
+### Repository Guide
+* [Final Model](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/final_model.ipynb "Final Model")
+* [EDA Notebook](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/final_eda.ipynb "EDA")
+* [Yelp API Call](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py)
+* [DarkSky API Call](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py)
+
+
 ### Restaurant Background
 
 The subject is a two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.84 MM in net sales in 2018 on 78,000 covers.
@@ -110,7 +117,7 @@ Root Mean Squared Error:  1246.30182948571
   <img src="https://user-images.githubusercontent.com/42282874/61133202-eec76d80-a48a-11e9-93e0-6c270a33f0c9.png" width="425" />
   <img src="https://user-images.githubusercontent.com/42282874/61133201-eec76d80-a48a-11e9-9885-e7cf2d71e7e0.png" width="425" /> 
 </p>
-*The residuals are well distributed with no discernible pattern*
+The residuals are well distributed with no discernible pattern
 
 #### XGBoost Regression
 An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
@@ -125,3 +132,36 @@ Root Mean Squared Error:  1217.2826052992425
   <img src="https://user-images.githubusercontent.com/42282874/61133794-271b7b80-a48c-11e9-9ba1-745409343f50.png" width="425" />
   <img src="https://user-images.githubusercontent.com/42282874/61133798-28e53f00-a48c-11e9-8f6d-270e16fccf2e.png" width="425" /> 
 </p>
+
+Random Forest Regression and Time Series Analyses were also performed as part of this project. The XGBoost Regression was the best model on the basis of R-Squared value and RMSE.
+
+### Model Evaluation
+
+The final model was evaluated by looking at the Mean Absolute Error and Mean Absolute Error Percentage as well. The following table shows the MAE by day of week:
+	
+| day_of_week   | mae    |	
+| ------------- |:-------:|
+| 0	            | 977.572937	|
+|1	            |  815.902605	|
+|2	            |  1712.731023	|
+|3	            |  688.793813	|
+|4	            |  1047.704243|
+|5	            |  1622.801563	|
+|6	            |  916.844354|
+
+The MAE overall was $1,112.51, or 6.47%.
+
+### Predictions
+
+The model's database can be updated with sales information, and the predictions can be made for the upcoming night and week:
+
+		
+| date			|	sales		|
+|---------|:---------:|
+2019-07-01	| 18721.912109
+2019-07-02	| 16959.234375
+2019-07-03	| 18023.652344
+2019-07-04	| 18155.720703
+2019-07-05	| 18667.253906
+2019-07-06	| 20416.929688
+2019-07-07	| 17300.466797
