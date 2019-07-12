@@ -7,7 +7,7 @@ import time
 
 from config import yelp_api_key
 
-class Location:
+class restaurantLocation:
 
     def __init__(self, name, location):
 
@@ -26,7 +26,7 @@ class Location:
 
         url_params = {
             'term': self.name.replace(' ', '+'),
-            'location': self.name.replace(' ', '+'),
+            'location': self.location.replace(' ', '+'),
             'limit': 10
             }
 
@@ -39,33 +39,40 @@ class Location:
         state = 'No Match'
         possible_matches = []
 
-        # Check search returns for match wtith business
-        for i in range(len(response['businesses'])):
+        try:
+            # Check search returns for match with business
+            for i in range(len(response['businesses'])):
 
-            # If match found:
-            if response['businesses'][i]['name'] == self.name:
+                # If match found:
+                if response['businesses'][i]['name'] == self.name:
 
-                # Local variables to help navigate JSON return
-                response_ = response['businesses'][0]
-                name_ = response_['name']
+                    # Local variables to help navigate JSON return
+                    response_ = response['businesses'][0]
+                    name_ = response_['name']
 
-                print(f'Weather Location: {name_}')
-                state = 'Match Found'
+                    print(f'Weather Location: {name_}')
+                    state = 'Match Found'
 
-                #print(response['businesses'][0])
-                return response_['coordinates']['latitude'], response_['coordinates']['longitude']
+                    #return (response['businesses'][0])
+                    return response_['coordinates']['latitude'], response_['coordinates']['longitude']
 
-            else:
-                
-                # If no exact match, append all search returns to list
-                possible_matches.append(response['businesses'][i]['name'])
-        
+                else:
+                    
+                    # If no exact match, append all search returns to list
+                    possible_matches.append(response['businesses'][i]['name'])
+        except:
+            pass
+
         # If no match, show user potential matches
         if state == 'No Match':
             
-            print('Exact match not found, did you mean one of the following? \n')
+            if len(possible_matches) > 0:
+
+                print('Exact match not found, please input one of the following venues: \n')
+                for possible_match in possible_matches:
+                    print(possible_match)
             
-            for possible_match in possible_matches:
-                print(possible_match)
+            else:
+                print('No matches found, please enter a proper venue name.')
                 
             return None, None
