@@ -100,6 +100,8 @@ The following features were engineered as part of the modeling process:
 
 * **Interaction Variables** | Between Temperature Bins & Outside Boolean.
 
+All Feature Engineering is wrapped in custom transformers and included in either a "Pre Processing Pipeline" or "Post Processing Pipeline."
+
 
 ### Modeling Process
 
@@ -156,7 +158,7 @@ The MAE overall was $1,112.51, or 6.47%.
 The model's database can be updated with sales information, and the predictions can be made for the upcoming night and week:
 
 		
-| date			|	sales		|
+| date			|	predicted_sales		|
 |---------|:---------:|
 2019-07-01	| 18721.912109
 2019-07-02	| 16959.234375
@@ -165,3 +167,19 @@ The model's database can be updated with sales information, and the predictions 
 2019-07-05	| 18667.253906
 2019-07-06	| 20416.929688
 2019-07-07	| 17300.466797
+
+### Planned Upgrades
+
+My intention is to build a model that can theoretically be productionized and applied to a generalized restaurant population. The workflow would be as follows:
+
+* **Onboarding** | Business is validated via Yelp API, CSV Template is generated to import Sales Data, a Database with Sales Data is created.
+
+* **Preproecesing** | Closed Days are discovered + confirmed, Outliers are detected and imputed.
+
+* **Feature Engineeering** | Months are clustered, Weather Data is incorporated using DarkSky's API, Weather Database is crated and Weather Features are created.
+
+* **Model Training** | An XGBoost Regression Models is trained on the restaurant's data.
+
+* **Predictions** | Predictions are made and sales are updated with actual sales.
+
+* **Model Retraining** | As new data is ingested, the model is retrained on a TBD interval.
