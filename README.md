@@ -174,7 +174,7 @@ My intention is to build a model that can theoretically be productionized and ap
 
 * **Onboarding** | Business is validated via Yelp API, CSV Template is generated to import Sales Data, a Database with Sales Data is created.
 
-* **Preproecesing** | Closed Days are discovered + confirmed, Outliers are detected and imputed.
+* **Preprocessing** | Closed Days are discovered + confirmed, Outliers are detected and imputed.
 
 * **Feature Engineeering** | Months are clustered, Weather Data is incorporated using DarkSky's API, Weather Database is crated and Weather Features are created.
 
