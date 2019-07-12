@@ -1,7 +1,7 @@
 # Art in the Age of Machine Learning
-### Predictive Analytics for Restaurants
+## Predictive Analytics for Restaurants
 
-#### Project Scope
+### Project Scope
 
 The restaurant industry operates with notoriously thin operating margins, typically dropping around 5% of total revenue to their bottom lines. For every $1.00 in sales, approximately $0.30 - $0.35 will likely go to cost of goods (e.g. raw ingredients, dry goods, alcohol) while an additional $0.30 - $0.35 will go to labor, leaving roughly $0.30 - $0.40 to cover overhead (rent, insurance, utilities, equipment rentals, waste management, accounting, marketing) and provide a return on capital, to the extent there is any excess after covering all the costs.
 
@@ -14,12 +14,12 @@ An accurate sales forecast provides several avenues of cost saving + revenue exp
 
 Using real sales data from a two-star restaurant located in Brooklyn, NY, this is a pilot project exploring what an end-to-end restaurant sales forecasting tool utilizing machine learning would entail.
 
-#### Data Sources
+### Data Sources
 * **Restaurant Sales Data** | Restaurant sales and guest counts ("covers") were downloaded directly from the restuarant's Point of Sale ("POS") on a check-by-check basis from 1/1/2017 through 06/30/2019, then aggregated into nightly totals covering the Dinner period only.
 
 * **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
 
-#### Restaurant Background
+### Restaurant Background
 
 The subject is a two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.84 MM in net sales in 2018 on 78,000 covers.
 
@@ -43,9 +43,9 @@ The following heatmap shows Average Sales for the restaurant by Day of Week & Mo
 
 In 2018, the last full year of operations, the subject averaged nightly sales of $16,170, with a standard deviation of $2,606.
 
-#### Baseline Linear Regression
+### Baseline Multilinear Regression
 
-A simple Linear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
+A simple Mulilinear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
 
 ```
 Train R-Squared:   0.7652830449744104
@@ -53,12 +53,12 @@ Test R-Squared:   0.7985732635793398
 Root Mean Squared Error:  1392.6958027653395
 ```
 
-#### Correlation
+### Correlation
 
 A quick look at the correlation coefficients between sales & temperature does imply a meaningful correlation between the two, though this is likely largely caused by the presense of additional outdoors seating in warm weather.
 
 
-Correlation by Day:
+#### Correlation (Sales + Temperature) by Day:
 ```
 {0: 0.6067494091067502,
  1: 0.5648085035371838,
@@ -71,11 +71,11 @@ Correlation by Day:
  
 ![download (1)](https://user-images.githubusercontent.com/42282874/61075753-b0797200-a3e8-11e9-8a76-729d48d2da34.png)
 
-#### Outliers
+### Outliers
 
-Sales & Covers two standard deviation or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
+Daily Sales & Covers values two standard deviations or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
 
-#### Feature Engineering
+### Feature Engineering
 
 The following features were engineered as part of the modeling process:
 
@@ -94,13 +94,34 @@ The following features were engineered as part of the modeling process:
 * **Interaction Variables** | Between Temperature Bins & Outside Boolean.
 
 
-#### Modeling Process
+### Modeling Process
 
-A Linear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
+#### Multilinear Regression
+A Multilinear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
 
 ```
 Train R-Squared:   0.7986569267331078
 Test R-Squared:   0.8386938046584955 
-
 Root Mean Squared Error:  1246.30182948571 
 ```
+
+#### Feature Importance & Residuals Check - Multilinear Regression with Lasso Regularization
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/42282874/61133202-eec76d80-a48a-11e9-93e0-6c270a33f0c9.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/61133201-eec76d80-a48a-11e9-9885-e7cf2d71e7e0.png" width="425" /> 
+</p>
+*The residuals are well distributed with no discernible pattern*
+
+#### XGBoost Regression
+An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
+
+```
+Train R-Squared:   0.831210056953917
+Test R-Squared:   0.8461181443087217 
+Root Mean Squared Error:  1217.2826052992425 
+```
+#### Feature Importance & Residuals Check - XGBoost with GridSearchCV
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/42282874/61133794-271b7b80-a48c-11e9-9ba1-745409343f50.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/61133798-28e53f00-a48c-11e9-8f6d-270e16fccf2e.png" width="425" /> 
+</p>
