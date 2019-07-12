@@ -122,6 +122,8 @@ Root Mean Squared Error:  1246.30182948571
 The residuals are well distributed with no discernible pattern
 
 #### XGBoost Regression
+XGBoost is a popular algorithm built on a gradient boosting framework. Gradient boosting is a sequential ensemble method built on the idea that weak predictors (or "learners") can learn from the "mistakes" (or residuals) of previous iterations.
+
 An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
 
 ```
@@ -129,6 +131,18 @@ Train R-Squared:   0.831210056953917
 Test R-Squared:   0.8461181443087217 
 Root Mean Squared Error:  1217.2826052992425 
 ```
+
+The best esimator after Grid Search:
+```
+Grid Search Best Estimator:  XGBRegressor(base_score=0.5, booster='gbtree', colsample_bylevel=1,
+       colsample_bytree=0.925, gamma=0, importance_type='gain',
+       learning_rate=0.02, max_delta_step=0, max_depth=3,
+       min_child_weight=2, min_impurity_decrease=0.0001, missing=None,
+       n_estimators=350, n_jobs=1, nthread=None, objective='reg:linear',
+       random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
+       seed=None, silent=True, subsample=1)
+```
+
 #### Feature Importance & Residuals Check - XGBoost with GridSearchCV
 <p float="left">
   <img src="https://user-images.githubusercontent.com/42282874/61133794-271b7b80-a48c-11e9-9ba1-745409343f50.png" width="425" />
