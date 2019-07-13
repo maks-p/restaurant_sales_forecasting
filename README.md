@@ -190,7 +190,7 @@ My intention is to build a model that can theoretically be productionized and ap
 
 * **Preprocessing** | Closed Days are discovered + confirmed, Outliers are detected and imputed.
 
-* **Feature Engineeering** | Months are clustered, Weather Data is incorporated using DarkSky's API, Weather Database is crated and Weather Features are created.
+* **Feature Engineeering** | Months are clustered, Weather Data is incorporated using DarkSky's API, Weather Database is created and Weather Features are engineered.
 
 * **Model Training** | An XGBoost Regression Models is trained on the restaurant's data.
 
