@@ -53,7 +53,7 @@ In 2018, the last full year of operations, the subject averaged nightly sales of
 ### Sales Distribution by Day
 ![sales_distribution](https://user-images.githubusercontent.com/42282874/61190509-415f8000-a66b-11e9-8852-1737822752c6.png)
 
-Weekends have a bit of a wider distribution than the rest of the week, reflecting a higher Standard Deviation compared to the rest of the week.
+Weekends have a bit of a wider distribution than the rest of the week, reflecting a higher Standard Deviation.
 
 ### Baseline Multilinear Regression
 
