@@ -50,6 +50,11 @@ The following heatmap shows Average Sales for the restaurant by Day of Week & Mo
 
 In 2018, the last full year of operations, the subject averaged nightly sales of $16,170, with a standard deviation of $2,606.
 
+### Sales Distribution by Day
+![sales_distribution](https://user-images.githubusercontent.com/42282874/61190509-415f8000-a66b-11e9-8852-1737822752c6.png)
+
+Weekends have a bit of a wider distribution than the rest of the week, reflecting a higher Standard Deviation compared to the rest of the week.
+
 ### Baseline Multilinear Regression
 
 A simple Mulilinear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
