@@ -73,7 +73,6 @@ class Weather:
                     'summary': find_val(r, 'currently', 'icon'),
                     'precip_max_time': precip_max_time}
         
-
             weather.append(entry)
 
         # Build DataFrame from List of Dictionaries
