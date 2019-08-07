@@ -81,7 +81,7 @@ A quick look at the correlation coefficients between sales & temperature does im
  6: 0.5558958668516343}
  ```
  
-![download (1)](https://user-images.githubusercontent.com/42282874/61075753-b0797200-a3e8-11e9-8a76-729d48d2da34.png)
+![download (1)](https://user-images.githubusercontent.com/42282874/62624092-4fae5e00-b8f0-11e9-9e55-29c1b5b9fd4c.png)
 
 ### Outliers
 
