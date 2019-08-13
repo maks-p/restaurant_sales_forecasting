@@ -50,6 +50,8 @@ The following heatmap shows Average Sales for the restaurant by Day of Week & Mo
 
 In 2018, the last full year of operations, the subject averaged nightly sales of $16,170, with a standard deviation of $2,606.
 
+All charts and scoring as of June 30th, 2019.
+
 ### Sales Distribution by Day
 ![sales_distribution](https://user-images.githubusercontent.com/42282874/61190509-415f8000-a66b-11e9-8852-1737822752c6.png)
 
