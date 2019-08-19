@@ -28,32 +28,32 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 ### Restaurant Background
 
-The subject is a two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.14 MM in revenue on 64,360 covers on indoor sales only (indoor revenue centers include the dining room, bar area, and a private dining room). For completeness, the outside area earned $733,000 of revenue in 2018.
+The subject is a two-star restaurant located in Brooklyn, NY. It has a patio that adds a substantial amount of seats. The subject is performing extremely well, earning $5.14 MM in revenue on 64,360 covers on indoor sales only (indoor revenue centers include the dining room, bar area, and a private dining room). For completeness, the outside area earned $733,000 of revenue in 2018, however as noted, the current analysis only covers the inside area.
 
 The following two charts demonstrate the restaurant's performance on a monthly basis:
 
 <p float="left">
   <img src="https://user-images.githubusercontent.com/42282874/60995179-ffa7a000-a31f-11e9-80ce-464b11728c0f.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/60995178-ffa7a000-a31f-11e9-9e4c-40493f248ae5.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63281291-5b980980-c27a-11e9-84b6-1f893896886f.png" width="425" /> 
 </p>
 
-With more seating available during the warmer months, there is clear seasonality present. And like most restaurants, the subject is busiest on weekends:
+The restaurant is busy all year, with minor seasonal effects (as noted, the restaurant does additional business outside during the warmer months). And like most restaurants and bars, the restaurant is busiest on weekends.
 
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/60994592-d20e2700-a31e-11e9-8c62-8226d3387769.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/60994593-d20e2700-a31e-11e9-95b7-ee228e4adc48.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63281372-88e4b780-c27a-11e9-9a1a-072843260557.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/63281500-d82ae800-c27a-11e9-829c-6bc75dafb879.png" width="425" /> 
 </p>
 
 The following heatmap shows Average Sales for the restaurant by Day of Week & Month:
 
-![heatmap](https://user-images.githubusercontent.com/42282874/61073078-9b99e000-a3e2-11e9-84cf-de5cd439a12a.png)
+![heatmap](https://user-images.githubusercontent.com/42282874/63281562-f7297a00-c27a-11e9-930f-656c418bc3f7.png)
 
-In 2018, the last full year of operations, the subject averaged nightly sales of $16,170, with a standard deviation of $2,606.
+In 2018, the last full year of operations, the subject averaged nightly sales of $14,319 inside, with a standard deviation of $1,703.
 
 All charts and scoring as of June 30th, 2019.
 
 ### Sales Distribution by Day
-![sales_distribution](https://user-images.githubusercontent.com/42282874/61190509-415f8000-a66b-11e9-8852-1737822752c6.png)
+![sales_distribution](https://user-images.githubusercontent.com/42282874/63281684-39eb5200-c27b-11e9-8ae9-0405db45587a.png)
 
 Weekends have a bit of a wider distribution than the rest of the week, reflecting a higher Standard Deviation.
 
@@ -62,32 +62,19 @@ Weekends have a bit of a wider distribution than the rest of the week, reflectin
 A simple Mulilinear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
 
 ```
-Train R-Squared:   0.7652830449744104
-Test R-Squared:   0.7985732635793398 
-Root Mean Squared Error:  1392.6958027653395
+Root Mean Squared Error:  1224.49
+Mean Absolute Error:  954.59 
 ```
 
 ### Correlation
 
-A quick look at the correlation coefficients between sales & temperature does imply a meaningful correlation between the two, though this is likely largely caused by the presense of additional outdoors seating in warm weather.
+There is a small, but present, correlation between the apparent temperature and inside sales, though we have not yet isolated the effect of temperature versus the effect of seasonality.
 
-
-#### Correlation (Sales + Temperature) by Day:
-```
-{0: 0.6067494091067502,
- 1: 0.5648085035371838,
- 2: 0.5217618281364986,
- 3: 0.5985487427152698,
- 4: 0.6526160966680253,
- 5: 0.6285813402808068,
- 6: 0.5558958668516343}
- ```
- 
-![download (1)](https://user-images.githubusercontent.com/42282874/62624157-75d3fe00-b8f0-11e9-82b7-149a6aa10a81.png)
+![sales_temp_ corr](https://user-images.githubusercontent.com/42282874/63281818-8afb4600-c27b-11e9-987b-21afed92ba11.png)
 
 ### Outliers
 
-Daily Sales & Covers values two standard deviations or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
+Sales and covers values two standard deviations or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
 
 ### Feature Engineering
 
@@ -116,15 +103,14 @@ All Feature Engineering is wrapped in custom transformers and included in either
 A Multilinear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
 
 ```
-Train R-Squared:   0.7986569267331078
-Test R-Squared:   0.8386938046584955 
-Root Mean Squared Error:  1246.30182948571 
+Root Mean Squared Error:  1117.55
+Mean Absolute Error:  867.35
 ```
 
 #### Feature Importance & Residuals Check - Multilinear Regression with Lasso Regularization
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/61133202-eec76d80-a48a-11e9-93e0-6c270a33f0c9.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/61133201-eec76d80-a48a-11e9-9885-e7cf2d71e7e0.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63282159-30161e80-c27c-11e9-9520-c47a18c51620.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/63282158-30161e80-c27c-11e9-9788-6e5d8b7b4398.png" width="425" /> 
 </p>
 The residuals are well distributed with no discernible pattern
 
@@ -134,73 +120,60 @@ XGBoost is a popular algorithm built on a gradient boosting framework. Gradient 
 An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
 
 ```
-Train R-Squared:   0.831210056953917
-Test R-Squared:   0.8461181443087217 
-Root Mean Squared Error:  1217.2826052992425 
+Root Mean Squared Error:  1075.82
+Mean Absolute Error:  834.70
 ```
 
 The best esimator after Grid Search:
 ```
 Grid Search Best Estimator:  XGBRegressor(base_score=0.5, booster='gbtree', colsample_bylevel=1,
-       colsample_bytree=0.925, gamma=0, importance_type='gain',
-       learning_rate=0.02, max_delta_step=0, max_depth=3,
-       min_child_weight=2, min_impurity_decrease=0.0001, missing=None,
-       n_estimators=350, n_jobs=1, nthread=None, objective='reg:linear',
-       random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
-       seed=None, silent=True, subsample=1)
+             colsample_bytree=0.775, gamma=0, importance_type='gain',
+             learning_rate=0.02, max_delta_step=0, max_depth=3,
+             min_child_weight=2, min_impurity_decrease=0.0001, missing=None,
+             n_estimators=275, n_jobs=1, nthread=None, objective='reg:linear',
+             random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
+             seed=None, silent=True, subsample=1)
 ```
 
 #### Feature Importance & Residuals Check - XGBoost with GridSearchCV
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/61133794-271b7b80-a48c-11e9-9ba1-745409343f50.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/61133798-28e53f00-a48c-11e9-8f6d-270e16fccf2e.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63282899-d878b280-c27d-11e9-9851-98ff1c11d8d3.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/63282905-d9a9df80-c27d-11e9-8258-d2fd2301c9af.png" width="425" /> 
 </p>
 
 Random Forest Regression and Time Series Analyses were also performed as part of this project. The XGBoost Regression was the best model on the basis of R-Squared value and RMSE.
 
 ### Model Evaluation
 
-The final model was evaluated by looking at the Mean Absolute Error and Mean Absolute Error Percentage as well. The following table shows the MAE by day of week:
+The following table shows the Mean Absolute Error by day of week:
 	
 | day_of_week   | mae    |	
 | ------------- |:-------:|
-| 0	            | 977.572937	|
-|1	            |  815.902605	|
-|2	            |  1712.731023	|
-|3	            |  688.793813	|
-|4	            |  1047.704243|
-|5	            |  1622.801563	|
-|6	            |  916.844354|
+| 0	            | 728.65	|
+|1	            |  874.47	|
+|2	            |  817.042	|
+|3	            |  781.26	|
+|4	            |  881.37 |
+|5	            |  873.19	|
+|6	            |  886.38 |
 
-The MAE overall was $1,112.51, or 6.47%.
+The MAE overall was $834.70, or 5.60%.
 
 ### Predictions
 
-The model's database can be updated with sales information, and the predictions can be made for the upcoming night and week:
+Predictions are made for the upcoming night & week:
 
 		
-| date			|	predicted_sales		|
+| date			|	predicted_inside_sales		|
 |---------|:---------:|
-2019-07-01	| 18721.912109
-2019-07-02	| 16959.234375
-2019-07-03	| 18023.652344
-2019-07-04	| 18155.720703
-2019-07-05	| 18667.253906
-2019-07-06	| 20416.929688
-2019-07-07	| 17300.466797
+2019-07-01	| 13191.470703
+2019-07-02	| 12730.857422
+2019-07-03	| 13375.191406
+2019-07-04	| 13481.114258
+2019-07-05	| 15225.776367
+2019-07-06	| 16289.688477
+2019-07-07	| 14202.731445
 
 ### Planned Upgrades
 
-My intention is to build a model that can theoretically be productionized and applied to a generalized restaurant population. The workflow would be as follows:
-
-* **Onboarding** | Business is validated via Yelp API, CSV Template is generated to import Sales Data, a Database with Sales Data is created.
-
-* **Preprocessing** | Closed Days are discovered + confirmed, Outliers are detected and imputed.
-
-* **Feature Engineeering** | Months are clustered, Weather Data is incorporated using DarkSky's API, Weather Database is created and Weather Features are engineered.
-
-* **Model Training** | An XGBoost Regression Models is trained on the restaurant's data.
-
-* **Predictions** | Predictions are made and sales are updated with actual sales.
-
-* **Model Retraining** | As new data is ingested, the model is retrained on a TBD interval.
+My intention is to build a model that can theoretically be productionized and applied to a generalized restaurant population. The first challenge is to build a robust data ingestion process that can handle different revenue centers (inside, outside, etc.), and day parts (lunch, dinner).
