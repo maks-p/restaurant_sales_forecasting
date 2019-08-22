@@ -1,33 +1,33 @@
-Ordered at,Qty,Menu Item,Ordered By,Check #,Gross Sales,Discount Amount,Net Sales,Tax Amount
-01 Oct 2018 at 17:59pm,1,Restaurant Rental Fee,Alicia Blegen,1256,"$15,000.00",-,"$15,000.00",-
-01 Oct 2018 at 18:02pm,1,Restaurant Rental Fee,Alicia Blegen,5653,"$15,000.00",-,"$15,000.00","$1,331.25"
-26 Jan 2019 at 19:00pm,1,Restaurant Rental Fee,Cassidy Leggett,9117,"$15,000.00",-,"$15,000.00","$1,331.25"
-20 May 2019 at 13:11pm,1,Restaurant Rental Fee,Alicia Blegen,7729,"$15,000.00",-,"$15,000.00","$1,331.25"
-29 Sep 2018 at 20:11pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,6436,"$2,000.00",-,"$2,000.00",$177.50
-04 Nov 2018 at 19:57pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,7233,"$2,000.00",-,"$2,000.00",$177.50
-17 Nov 2018 at 18:08pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,4402,"$2,000.00",-,"$2,000.00",$177.50
-30 Nov 2018 at 19:02pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,9950,"$2,000.00",-,"$2,000.00",$177.50
-11 Dec 2018 at 19:35pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,6890,"$2,000.00",-,"$2,000.00",$177.50
-14 Dec 2018 at 19:30pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,8196,"$2,000.00",-,"$2,000.00",$177.50
-17 Dec 2018 at 17:37pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,4120,"$2,000.00",-,"$2,000.00",$177.50
-18 Dec 2018 at 18:49pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,5999,"$2,000.00",-,"$2,000.00",$177.50
-20 Dec 2018 at 17:55pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,2305,"$2,000.00",-,"$2,000.00",$177.50
-10 Jan 2019 at 18:46pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,2529,"$2,000.00",-,"$2,000.00",$177.50
-25 Jan 2019 at 17:45pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,246,"$2,000.00",-,"$2,000.00",$177.50
-29 Jan 2019 at 19:48pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,1615,"$2,000.00",-,"$2,000.00",$177.50
-02 Feb 2019 at 18:54pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,8937,"$2,000.00",-,"$2,000.00",$177.50
-20 Feb 2019 at 18:35pm,1,Room Rental Fee (HALF BUYOUT),Cassidy Leggett,7491,"$2,000.00",-,"$2,000.00",$177.50
-02 Mar 2019 at 19:11pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,5467,"$2,000.00",-,"$2,000.00",$177.50
-21 May 2019 at 19:47pm,1,Room Rental Fee (HALF BUYOUT),Anderson Hurley,7306,"$2,000.00",-,"$2,000.00",$177.50
-01 Jun 2019 at 21:43pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,3391,"$2,000.00",-,"$2,000.00",$177.50
-07 Jun 2019 at 13:50pm,1,Room Rental Fee (HALF BUYOUT),Alicia Blegen,7114,"$2,000.00",-,"$2,000.00",$177.50
-25 Jun 2019 at 19:02pm,1,Room Rental Fee (HALF BUYOUT),Anderson Hurley,3965,"$2,000.00",-,"$2,000.00",$177.50
-30 Jun 2019 at 01:08am,1,Room Rental Fee (HALF BUYOUT),Anderson Hurley,6927,"$2,000.00",-,"$2,000.00",$177.50
-06 Sep 2018 at 22:26pm,1,Room Rental Fee (FULL BUYOUT),Jeremy Swift,8762,"$4,000.00",-,"$4,000.00",$355.00
-20 Oct 2018 at 15:36pm,1,Room Rental Fee (FULL BUYOUT),Alicia Blegen,6100,"$4,000.00",-,"$4,000.00",$355.00
-07 Nov 2018 at 21:54pm,1,Room Rental Fee (FULL BUYOUT),Alicia Blegen,4908,"$4,000.00",-,"$4,000.00",$355.00
-10 Nov 2018 at 13:52pm,1,Room Rental Fee (FULL BUYOUT),Cassidy Leggett,8579,"$4,000.00",-,"$4,000.00",$355.00
-13 Dec 2018 at 18:29pm,1,Room Rental Fee (FULL BUYOUT),Cassidy Leggett,1153,"$4,000.00",-,"$4,000.00",$355.00
-27 Apr 2019 at 19:05pm,1,Room Rental Fee (FULL BUYOUT),Cassidy Leggett,234,"$4,000.00",-,"$4,000.00",$355.00
-30 Apr 2019 at 19:51pm,1,Room Rental Fee (FULL BUYOUT),Cassidy Leggett,5894,"$4,000.00",-,"$4,000.00",$355.00
-22 Jun 2019 at 11:57am,1,Room Rental Fee (FULL BUYOUT),Alicia Blegen,9943,"$4,000.00",-,"$4,000.00",$355.00
+Ordered at,Revenue Center,Check #,Net Sales
+01 Oct 2018 at 17:59pm,Dining Room,1256,"$15,000.00"
+01 Oct 2018 at 18:02pm,PDR,5653,"$15,000.00"
+26 Jan 2019 at 19:00pm,Dining Room,9117,"$15,000.00"
+20 May 2019 at 13:11pm,PDR,7729,"$15,000.00"
+29 Sep 2018 at 20:11pm,PDR,6436,"$2,000.00"
+04 Nov 2018 at 19:57pm,PDR,7233,"$2,000.00"
+17 Nov 2018 at 18:08pm,PDR,4402,"$2,000.00"
+30 Nov 2018 at 19:02pm,PDR,9950,"$2,000.00"
+11 Dec 2018 at 19:35pm,PDR,6890,"$2,000.00"
+14 Dec 2018 at 19:30pm,PDR,8196,"$2,000.00"
+17 Dec 2018 at 17:37pm,PDR,4120,"$2,000.00"
+18 Dec 2018 at 18:49pm,PDR,5999,"$2,000.00"
+20 Dec 2018 at 17:55pm,PDR,2305,"$2,000.00"
+10 Jan 2019 at 18:46pm,PDR,2529,"$2,000.00"
+25 Jan 2019 at 17:45pm,PDR,246,"$2,000.00"
+29 Jan 2019 at 19:48pm,PDR,1615,"$2,000.00"
+02 Feb 2019 at 18:54pm,PDR,8937,"$2,000.00"
+20 Feb 2019 at 18:35pm,PDR,7491,"$2,000.00"
+02 Mar 2019 at 19:11pm,PDR,5467,"$2,000.00"
+21 May 2019 at 19:47pm,PDR,7306,"$2,000.00"
+01 Jun 2019 at 21:43pm,PDR,3391,"$2,000.00"
+07 Jun 2019 at 13:50pm,Dining Room,7114,"$2,000.00"
+25 Jun 2019 at 19:02pm,PDR,3965,"$2,000.00"
+30 Jun 2019 at 01:08am,Patio,6927,"$2,000.00"
+06 Sep 2018 at 22:26pm,PDR,8762,"$4,000.00"
+20 Oct 2018 at 15:36pm,Dining Room,6100,"$4,000.00"
+07 Nov 2018 at 21:54pm,PDR,4908,"$4,000.00"
+10 Nov 2018 at 13:52pm,Dining Room,8579,"$4,000.00"
+13 Dec 2018 at 18:29pm,PDR,1153,"$4,000.00"
+27 Apr 2019 at 19:05pm,PDR,234,"$4,000.00"
+30 Apr 2019 at 19:51pm,PDR,5894,"$4,000.00"
+22 Jun 2019 at 11:57am,PDR,9943,"$4,000.00"
