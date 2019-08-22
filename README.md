@@ -12,16 +12,19 @@ An accurate sales forecast provides several avenues of cost saving + revenue exp
 * **Lean Inventory** | Inventory is a drag on cash flow and high levels of inventory of fresh goods can lead to spoilage and food waste.
 * **Marketing Initiatives** | Maximize marketing dollars by targeting slow nights and weeks.
 
-Using real sales data from a two-star restaurant located in Brooklyn, NY, this is a pilot project exploring what an end-to-end restaurant sales forecasting tool utilizing machine learning would entail.
+Using real sales data from a two-star restaurant located in Brooklyn, NY, this is a pilot project exploring what an end-to-end restaurant sales forecasting tool utilizing machine learning would entail. 
 
 ### Data Sources
-* **Restaurant Sales Data** | Restaurant sales and guest counts ("covers") were downloaded directly from the restuarant's Point of Sale ("POS") on a check-by-check basis from 1/1/2017 through 06/30/2019, then aggregated into nightly totals covering the Dinner period only, and for the moment, excluding the outdoor area revenue center.
+* **Restaurant Sales Data** | Restaurant sales and guest counts ("covers") were downloaded directly from the restuarant's Point of Sale ("POS") on a check-by-check basis from 1/1/2017 through 06/30/2019, then aggregated into nightly totals covering the Dinner period only, and for the moment, excluding the outdoor area revenue center. 
+
+* **Reservations & Covers Data** | Reservations and covers data was downloaded directly from the restaurant's Resy platform. Resy data was considered the ground truth for covers data, however only aggregate data was available. Inside and outside cover counts were imputed from POS & Resy data. Total covers is equal to total Resy cover counts.
 
 * **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/inside-sales-only/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
 
 ### Repository Guide
 * [Final Model](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/final_model.ipynb "Final Model")
 * [EDA Notebook](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/final_eda.ipynb "EDA")
+* [AWS RDS Set Up](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/load_aws_rds.ipynb "AWS RDS")
 * [Yelp API Call](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py)
 * [DarkSky API Call](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py)
 
@@ -74,7 +77,7 @@ There is a small, but present, correlation between the apparent temperature and 
 
 ### Outliers
 
-Sales and covers values two standard deviations or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 13 outlier days were imputed for Sales data (1.4% of total).
+Sales and covers values three standard deviations or more from the mean were imputed with the median value for that particular day (i.e. if an outlier fell on a Wednesday, the value was replaced with the Wednesday median value). Overall, 12 outlier days were imputed for Sales data (1.3% of total).
 
 ### Feature Engineering
 
@@ -103,14 +106,14 @@ All Feature Engineering is wrapped in custom transformers and included in either
 A Multilinear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
 
 ```
-Root Mean Squared Error:  1117.55
-Mean Absolute Error:  867.35
+Root Mean Squared Error:  1202.13
+Mean Absolute Error:  907.57
 ```
 
 #### Feature Importance & Residuals Check - Multilinear Regression with Lasso Regularization
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/63282159-30161e80-c27c-11e9-9520-c47a18c51620.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/63282158-30161e80-c27c-11e9-9788-6e5d8b7b4398.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63528876-bbd4b880-c4d1-11e9-88d5-fc1f7255ce82.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/63528875-bbd4b880-c4d1-11e9-999d-333f5707d2ed.png" width="425" /> 
 </p>
 The residuals are well distributed with no discernible pattern
 
@@ -120,8 +123,8 @@ XGBoost is a popular algorithm built on a gradient boosting framework. Gradient 
 An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
 
 ```
-Root Mean Squared Error:  1075.82
-Mean Absolute Error:  834.70
+Root Mean Squared Error:  1130.60
+Mean Absolute Error:  857.40
 ```
 
 The best esimator after Grid Search:
@@ -137,11 +140,11 @@ Grid Search Best Estimator:  XGBRegressor(base_score=0.5, booster='gbtree', cols
 
 #### Feature Importance & Residuals Check - XGBoost with GridSearchCV
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/42282874/63282899-d878b280-c27d-11e9-9851-98ff1c11d8d3.png" width="425" />
-  <img src="https://user-images.githubusercontent.com/42282874/63282905-d9a9df80-c27d-11e9-8258-d2fd2301c9af.png" width="425" /> 
+  <img src="https://user-images.githubusercontent.com/42282874/63530325-40283b00-c4d4-11e9-8540-b3584048bd75.png" width="425" />
+  <img src="https://user-images.githubusercontent.com/42282874/63530328-41f1fe80-c4d4-11e9-93c7-467143c7291f.png" width="425" /> 
 </p>
 
-Random Forest Regression and Time Series Analyses were also performed as part of this project. The XGBoost Regression was the best model on the basis of R-Squared value and RMSE.
+Random Forest Regression and Time Series Analyses were also performed as part of this project. The XGBoost Regression was the best model on the basis of RMSE & MAE.
 
 ### Model Evaluation
 
@@ -149,13 +152,13 @@ The following table shows the Mean Absolute Error by day of week:
 	
 | day_of_week   | mae    |	
 | ------------- |:-------:|
-| 0	            | 728.65	|
-|1	            |  874.47	|
-|2	            |  817.042	|
-|3	            |  781.26	|
-|4	            |  881.37 |
-|5	            |  873.19	|
-|6	            |  886.38 |
+| 0	            | 712.64	|
+|1	            |  868.38	|
+|2	            |  920.18	|
+|3	            |  684.04	|
+|4	            |  937.02|
+|5	            |  1000.91	|
+|6	            |  874.07 |
 
 The MAE overall was $834.70, or 5.60%.
 
