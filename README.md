@@ -65,8 +65,8 @@ Weekends have a bit of a wider distribution than the rest of the week, reflectin
 A simple Mulilinear Regression Model that accounts for the outside space being open, closed days, and day of week (as dummy variables) performs fairly well, and provides a jumping off point for more extensive feature engineering, including weather data.
 
 ```
-Root Mean Squared Error:  1224.49
-Mean Absolute Error:  954.59 
+Root Mean Squared Error:  1303.80
+Mean Absolute Error:  991.15
 ```
 
 ### Correlation
