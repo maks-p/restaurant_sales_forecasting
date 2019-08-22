@@ -56,7 +56,7 @@ In 2018, the last full year of operations, the subject averaged nightly sales of
 All charts and scoring as of June 30th, 2019.
 
 ### Sales Distribution by Day
-![sales_distribution](https://user-images.githubusercontent.com/42282874/63281684-39eb5200-c27b-11e9-8ae9-0405db45587a.png)
+![sales_distribution](https://user-images.githubusercontent.com/42282874/63530975-8a5dec00-c4d5-11e9-8a66-351039c9df75.png)
 
 Weekends have a bit of a wider distribution than the rest of the week, reflecting a higher Standard Deviation.
 
@@ -71,9 +71,9 @@ Mean Absolute Error:  954.59
 
 ### Correlation
 
-There is a small, but present, correlation between the apparent temperature and inside sales, though we have not yet isolated the effect of temperature versus the effect of seasonality.
+There is a small, but present, correlation between the apparent temperature and inside sales, though we have not isolated the effect of temperature versus the effect of seasonality.
 
-![sales_temp_ corr](https://user-images.githubusercontent.com/42282874/63281818-8afb4600-c27b-11e9-987b-21afed92ba11.png)
+![sales_temp_ corr](https://user-images.githubusercontent.com/42282874/63530976-8af68280-c4d5-11e9-9888-2bdbddc0c45f.png)
 
 ### Outliers
 
