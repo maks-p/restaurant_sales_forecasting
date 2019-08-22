@@ -95,8 +95,6 @@ The following features were engineered as part of the modeling process:
 
 * **Holiday & Sunday Three Day Weekend** | Calendar features.
 
-* **Interaction Variables** | Between Temperature Bins & Outside Boolean.
-
 All Feature Engineering is wrapped in custom transformers and included in either a "Pre Processing Pipeline" or "Post Processing Pipeline."
 
 
