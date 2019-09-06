@@ -1,21 +1,15 @@
-import numpy as np
-import pandas as pd
 import requests
 import json
-from datetime import datetime
-import time
 
 from config import yelp_api_key
 
-class restaurantLocation:
+class Location:
 
     def __init__(self, name, location):
-
         self.name = name
         self.location = location
 
-    def get_lat_long(self):
-
+    def make_api_call(self):
         host = 'https://api.yelp.com'
         path = '/v3/businesses/search'
         
@@ -32,11 +26,15 @@ class restaurantLocation:
 
         url_params = url_params or {}
         url = '{}{}'.format(host, path)
-
         response = requests.get(url, headers=headers, params=url_params).json()
+
+        return response
+
+    def validate_business(self):
+        response = self.make_api_call()
         
-        # Set state to 'No Match' in case no Yelp match found
-        state = 'No Match'
+        # Set state to False in case no Yelp match found
+        state = False
         possible_matches = []
 
         try:
@@ -45,34 +43,22 @@ class restaurantLocation:
 
                 # If match found:
                 if response['businesses'][i]['name'] == self.name:
-
-                    # Local variables to help navigate JSON return
-                    response_ = response['businesses'][0]
-                    name_ = response_['name']
-
-                    print(f'Weather Location: {name_}')
-                    state = 'Match Found'
-
-                    #return (response['businesses'][0])
-                    return response_['coordinates']['latitude'], response_['coordinates']['longitude']
-
-                else:
-                    
-                    # If no exact match, append all search returns to list
-                    possible_matches.append(response['businesses'][i]['name'])
+                    return response['businesses'][0]
+                    state = True
         except:
-            pass
+            print('Venue not found, please enter a valid venue')
 
-        # If no match, show user potential matches
-        if state == 'No Match':
-            
-            if len(possible_matches) > 0:
+    def lat_long(self):
+        r = self.validate_business()
 
-                print('Exact match not found, please input one of the following venues: \n')
-                for possible_match in possible_matches:
-                    print(possible_match)
-            
-            else:
-                print('No matches found, please enter a proper venue name.')
-                
-            return None, None
+        #return (response['businesses'][0])
+        lat, long = r['coordinates']['latitude'], r['coordinates']['longitude']
+
+        return lat, long
+
+        
+
+
+
+
+
