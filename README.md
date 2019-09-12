@@ -19,7 +19,7 @@ Using real sales data from a two-star restaurant located in Brooklyn, NY, this i
 
 * **Reservations & Covers Data** | Reservations and covers data was downloaded directly from the restaurant's Resy platform. Resy data was considered the ground truth for covers data, however only aggregate data was available. Inside and outside cover counts were imputed from POS & Resy data. Total covers is equal to total Resy cover counts.
 
-* **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/inside-sales-only/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
+* **Weather Data** | Weather data was accessed via the DarkSky API, as of 7:30 PM each day. The source code for the API call can be found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/weather.py "weather.py"). The latitude and longitude for the restuarant, required to access the weather data, is accessed via the Yelp API - the source code for this API call is found [here](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/restaurant_info.py "restaurant_info.py"). 
 
 ### Repository Guide
 * [Final Model](https://github.com/maks-p/restaurant_sales_forecasting/blob/master/final_model.ipynb "Final Model")
