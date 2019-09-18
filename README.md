@@ -104,8 +104,8 @@ All Feature Engineering is wrapped in custom transformers and included in either
 A Multilinear Regression Model with Lasso Regularization after Feature Engineering performed better than the Baseline Linear Regression:
 
 ```
-Root Mean Squared Error:  1202.13
-Mean Absolute Error:  907.57
+Root Mean Squared Error:  1194.88
+Mean Absolute Error:  901.92
 ```
 
 #### Feature Importance & Residuals Check - Multilinear Regression with Lasso Regularization
@@ -121,19 +121,20 @@ XGBoost is a popular algorithm built on a gradient boosting framework. Gradient 
 An XGBoost Regressor with GridSearchCV parameter tuning built the best model:
 
 ```
-Root Mean Squared Error:  1130.60
-Mean Absolute Error:  857.40
+Root Mean Squared Error:  1140.57
+Mean Absolute Error:  863.03
 ```
 
 The best esimator after Grid Search:
 ```
 Grid Search Best Estimator:  XGBRegressor(base_score=0.5, booster='gbtree', colsample_bylevel=1,
-             colsample_bytree=0.775, gamma=0, importance_type='gain',
-             learning_rate=0.02, max_delta_step=0, max_depth=3,
-             min_child_weight=2, min_impurity_decrease=0.0001, missing=None,
-             n_estimators=275, n_jobs=1, nthread=None, objective='reg:linear',
-             random_state=0, reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
-             seed=None, silent=True, subsample=1)
+             colsample_bynode=1, colsample_bytree=0.775, gamma=0,
+             importance_type='gain', learning_rate=0.015, max_delta_step=0,
+             max_depth=4, min_child_weight=2, min_impurity_decrease=0.0001,
+             missing=None, n_estimators=350, n_jobs=1, nthread=None,
+             objective='reg:squarederror', random_state=0, reg_alpha=0,
+             reg_lambda=1, scale_pos_weight=1, seed=None, silent=None,
+             subsample=1, verbosity=1)
 ```
 
 #### Feature Importance & Residuals Check - XGBoost with GridSearchCV
@@ -150,15 +151,15 @@ The following table shows the Mean Absolute Error by day of week:
 	
 | day_of_week   | mae    |	
 | ------------- |:-------:|
-| 0	            | 712.64	|
-|1	            |  868.38	|
-|2	            |  920.18	|
-|3	            |  684.04	|
-|4	            |  937.02|
-|5	            |  1000.91	|
-|6	            |  874.07 |
+| 0	            | 740.03	|
+|1	            |  881.73	|
+|2	            |  868.14	|
+|3	            |  659.87	|
+|4	            |  985.76 |
+|5	            |  1001.88	|
+|6	            |  901.24 |
 
-The MAE overall was $857.40, or 5.70%.
+The MAE overall was $863.03, or 5.71%.
 
 ### Predictions
 
@@ -167,13 +168,13 @@ Predictions are made for the upcoming night & week:
 		
 | date			|	predicted_inside_sales		|
 |---------|:---------:|
-2019-07-01	| 12981.33
-2019-07-02	| 12830.47
-2019-07-03	| 13217.37
-2019-07-04	| 13295.29
-2019-07-05	| 14842.32
-2019-07-06	| 15908.46
-2019-07-07	| 14242.5
+2019-07-01	| 13052.13
+2019-07-02	| 12648.56
+2019-07-03	| 13204.51
+2019-07-04	| 13233.71
+2019-07-05	| 14758.50
+2019-07-06	| 15656.71
+2019-07-07	| 13957.24
 
 ### Planned Upgrades
 
