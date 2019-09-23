@@ -178,4 +178,6 @@ Predictions are made for the upcoming night & week:
 
 ### Planned Upgrades
 
-My intention is to build a model that can theoretically be productionized and applied to a generalized restaurant population. The first challenge is to build a robust data ingestion process that can handle different revenue centers (inside, outside, etc.), and day parts (lunch, dinner).
+My intention is to build a model that can  be productionized and applied to a generalized restaurant population. This project is just a prototype scratching the surface of this goal.
+
+
