@@ -176,8 +176,6 @@ Predictions are made for the upcoming night & week:
 2019-07-06	| 15656.71
 2019-07-07	| 13957.24
 
-### Planned Upgrades
 
-My intention is to build a model that can  be productionized and applied to a generalized restaurant population. This project is just a prototype scratching the surface of this goal.
 
 
